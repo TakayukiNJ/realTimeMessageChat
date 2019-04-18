@@ -13,11 +13,21 @@ class ChatController extends Controller
     
     }
     
-    public function create(Request $request) { // メッセージを登録
+    // public function create(Request $request) { // メッセージを登録
     
-        \App\Message::create([
+    //     \App\Message::create([
+    //         'body' => $request->message
+    //     ]);
+    
+    // }
+    
+    public function create(Request $request) {
+
+        $message = \App\Message::create([
             'body' => $request->message
         ]);
+        event(new MessageCreated($message));
     
     }
+    
 }
