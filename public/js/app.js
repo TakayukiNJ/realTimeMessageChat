@@ -990,8 +990,19 @@ window.Vue = __webpack_require__(37);
 Vue.component('example-component', __webpack_require__(41));
 
 var app = new Vue({
-  el: '#app'
+  el: '#chat'
 });
+
+// import Echo from 'laravel-echo'
+
+// window.Pusher = require('pusher-js');
+
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: 'f8a7d3c0fcf782795068',
+//     cluster: 'ap3',
+//     encrypted: true
+// });
 
 /***/ }),
 /* 11 */

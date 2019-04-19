@@ -1,5 +1,6 @@
 <html>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <body>
     <div id="chat">
         <textarea v-model="message"></textarea>
@@ -19,8 +20,6 @@
         </div>
 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
 
@@ -59,6 +58,13 @@
             mounted() {
 
                 this.getMessages();
+
+                Echo.channel('chat')
+                    .listen('MessageCreated', (e) => {
+
+                        this.getMessages(); // メッセージを再読込
+
+                    });
 
             }
         });
